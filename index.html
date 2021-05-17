@@ -31,7 +31,7 @@
 	#solarSystem
 	{
 		padding-right: 100px;
-		width: 25000px;
+		width: 42000px;
 	}
 
 	div.sun {
@@ -114,6 +114,27 @@
 	</div>
 
 <script type="text/javascript">
+
+	var g = 6.674E-11; //Gravitational Constant
+	var m_es = 1.988435E+30+5.97E+24; //Mass(Sun) + Mass(Earth)
+	var gm = g * m_es;
+	var years_to_seconds = 365*24*60*60;
+	var meters_to_au = 6.68459E-12;
+	var humanLife = 80;
+
+	for( var index in animal_data )
+	{
+		var animal = animal_data[index];
+		if( animal.life != null )
+		{
+			var year_in_years = animal.life/humanLife;
+			var year_in_seconds = year_in_years * years_to_seconds;
+			var distance = Math.pow( gm*Math.pow( year_in_seconds/(2*Math.PI) , 2)  , 1/3 );
+			animal_data[index].au = distance * meters_to_au;
+		}
+
+	}
+
 	var sorted_data = animal_data.sort( (a,b)=>{
 		return a.au-b.au;
 	} );
