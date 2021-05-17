@@ -83,8 +83,7 @@ var animal_data = [
 {'name':'Pheasant','au':0.369749457926779,'life':18,'entry':5},
 {'name':'Turkey Buzzard','au':0.369749457926779,'life':18,'entry':6},
 {'name':'Wolf','au':0.369749457926779,'life':18,'entry':7},
-{'name':'Canvasback duck','au':0.383320115088443,'life':19,'entry':0},
-
+{'name':'Canvasback Duck','au':0.383320115088443,'life':19,'entry':0},
 {'name':'Beaver','au':0.396654640657767,'life':20,'entry':0},
 {'name':'Bottlenose Dolphin','au':0.396654640657767,'life':20,'entry':1},
 {'name':'Canary','au':0.396654640657767,'life':20,'entry':2},
