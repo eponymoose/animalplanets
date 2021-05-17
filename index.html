@@ -1,0 +1,141 @@
+<html>
+<head>
+	<title>Animal Planets</title>
+	<style type="text/css">
+	html, body {
+		margin: 0px;
+		border: 0;
+		display: block;
+		background-color: #000000;
+		font-family: "Lucida Console", Monospace;
+		cursor: default;
+		color: #FFFFFF;
+		font-size: 18px;
+	}
+
+	div.title {
+		font-size: 24px;
+		margin: 20px;
+	}
+
+	div.info {
+		width: 800px;
+		padding: 20px 0px 20px 0px;
+		margin: 20px;
+	}
+
+	#solarSystem
+	{
+		padding-right: 100px;
+		width: 25000px;
+	}
+
+	div.sun {
+		background-color: #FFFF00;
+		color: #000000;
+  		border-radius: 200px;
+  		padding: 200px;
+  		display: inline-block;
+  		margin-left: -150px;
+  		vertical-align: middle;
+	}
+	div.planetHolder
+	{
+  		display: inline-block;
+  		margin-top: 50px;
+  		position: relative;
+  		vertical-align: middle;
+  		white-space: nowrap;
+	}
+	div.planet
+	{
+		background-color: #9595FF;
+  		display: inline-block;
+  		border-radius: 10px;
+  		padding: 10px;
+	}
+	div.big
+	{
+  		border-radius: 20px;
+  		padding: 20px;
+	}
+	div.blue
+	{
+		background-color: blue;
+	}
+	div.red
+	{
+		background-color: red;
+	}
+	div.yellow
+	{
+		background-color: yellow;
+	}
+	span.planetName
+	{
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+		padding-top: 5px;
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="animal_data.js"></script>
+</head>
+<body>
+	<div class ="title">
+		Animal's Planets
+	</div>
+	<div class="info">
+		<p>One year is the period it takes a planet to go around the sun. 
+		Often we measure the lifespan of a dog in dog years.
+		This implies that somewhere there is a planet with an orbital period of one dog year.
+		This must be true for other animals as well.
+		I was curious where these plants might appear in the solar system.</p>
+		<p>So I made a chart. </p>
+		<ul>
+			<li>1AU ~= 10000px</li>
+			<li>Animal lifespan sourced from: <a href="https://propelsteps.wordpress.com/2020/07/14/know-life-span-of-animals-list/">https://propelsteps.wordpress.com/2020/07/14/know-life-span-of-animals-list/</a></li>
+		</ul>
+	</div>
+	<div id="solarSystem">
+		<div class="planetHolder">
+			<div class="sun">
+				Sun
+			</div>
+		</div>
+		<div class="planetHolder" style="left: 200px">
+				<p>Planets are that way --></p>
+		</div>
+	</div>
+
+<script type="text/javascript">
+	var sorted_data = animal_data.sort( (a,b)=>{
+		return a.au-b.au;
+	} );
+
+	var offset = 0;
+
+	for( var index in sorted_data )
+	{
+		offset += 1;
+
+		var animal = animal_data[index];
+		var html = '<div class="planetHolder" style="left: ';
+		html +=  animal.au * 10000 + 20*offset;
+		html += 'px"><div class="';
+		html += "planet ";
+		if( animal.color != null )
+		{
+			html += "big " + animal.color;
+		}
+		html += '"></div><br/><span class="planetName">-Planet ';
+		html += animal.name + " " + animal.au.toFixed(2) +"au";
+		if( animal.life != null )
+		{
+			html += " (" + animal.life + " years)"
+		}
+		html += '</span></div>';
+		$("#solarSystem").append(html);
+	}
+</script>
+</body>
+</html>
